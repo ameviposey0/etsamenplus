@@ -987,7 +987,10 @@ input[type="number"]:focus {
     .form-container,
     .product-card,
     .btn,
-    .logo-icon {
+    .logo-icon,
+    .form-section,
+    input[type="text"],
+    input[type="number"] {
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
@@ -998,6 +1001,68 @@ input[type="number"]:focus {
     .decoration-dots span {
         animation: dotsPulse 2s ease-in-out infinite;
     }
+
+    /* Animation d'entrée pour les éléments */
+    .form-container,
+    .product-card {
+        animation: fadeInUp 0.6s ease-out;
+    }
+
+    .content-header {
+        animation: fadeInDown 0.8s ease-out;
+    }
+}
+
+/* Animations d'entrée */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animation de survol améliorée pour les boutons */
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.btn-primary:hover {
+    box-shadow: 0 15px 35px rgba(0, 122, 255, 0.4);
+}
+
+.btn-secondary:hover {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Animation de survol pour les cartes de produits */
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* Animation de focus améliorée pour les inputs */
+input[type="text"]:focus,
+input[type="number"]:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.1);
 }
 
 /* Optimisations pour les écrans tactiles */
@@ -1018,6 +1083,178 @@ input[type="number"]:focus {
     input[type="text"]:focus,
     input[type="number"]:focus {
         transform: none;
+    }
+}
+
+/* Optimisations de performance */
+.container,
+.header,
+.form-container,
+.product-card {
+    will-change: transform;
+    backface-visibility: hidden;
+}
+
+/* Support pour les écrans haute fréquence (120Hz+) */
+@media (min-resolution: 120dpi) {
+
+    .header,
+    .form-container,
+    .product-card,
+    .btn {
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+}
+
+/* Support pour les écrans avec une largeur d'écran très large */
+@media (min-width: 3840px) {
+    .container {
+        max-width: 2400px;
+        padding: 0 80px;
+    }
+
+    .header-content {
+        max-width: 2400px;
+        padding: 0 80px;
+    }
+
+    .content-header h2 {
+        font-size: 6rem;
+    }
+
+    .content-header p {
+        font-size: 1.8rem;
+    }
+
+    .form-container {
+        max-width: 1400px;
+        padding: 100px;
+        border-radius: 40px;
+    }
+
+    .logo-text h1 {
+        font-size: 4rem;
+    }
+
+    .logo-text p {
+        font-size: 1.6rem;
+    }
+
+    .logo-icon {
+        width: 100px;
+        height: 100px;
+        border-radius: 30px;
+    }
+
+    .logo-icon i {
+        font-size: 2.8rem;
+    }
+}
+
+/* Support pour les écrans avec une hauteur très limitée (mode paysage sur mobile) */
+@media (max-height: 400px) {
+    .header {
+        padding: 15px 0;
+        border-radius: 0 0 20px 20px;
+    }
+
+    .main-content {
+        padding: 25px 0;
+    }
+
+    .content-header {
+        margin-bottom: 25px;
+    }
+
+    .content-header h2 {
+        font-size: 2.2rem;
+        margin-bottom: 10px;
+    }
+
+    .form-container {
+        padding: 25px 20px;
+    }
+
+    .recent-products-section {
+        margin-top: 30px;
+        padding: 25px 0;
+    }
+
+    .section-header h2 {
+        font-size: 1.8rem;
+    }
+
+    .section-header p {
+        font-size: 1rem;
+    }
+}
+
+/* Support pour les écrans avec une largeur très limitée (smartphones très petits) */
+@media (max-width: 240px) {
+    .container {
+        padding: 0 5px;
+    }
+
+    .header-content {
+        padding: 0 5px;
+    }
+
+    .content-header h2 {
+        font-size: 1.3rem;
+    }
+
+    .content-header p {
+        font-size: 0.8rem;
+    }
+
+    .form-container {
+        padding: 15px 12px;
+        margin: 0 3px;
+        border-radius: 12px;
+    }
+
+    .logo-text h1 {
+        font-size: 1.2rem;
+    }
+
+    .logo-text p {
+        font-size: 0.8rem;
+    }
+
+    .logo-icon {
+        width: 30px;
+        height: 30px;
+        border-radius: 10px;
+    }
+
+    .logo-icon i {
+        font-size: 1rem;
+    }
+
+    .btn {
+        padding: 10px 15px;
+        font-size: 0.8rem;
+        border-radius: 12px;
+    }
+
+    .header {
+        border-radius: 0 0 12px 12px;
+        padding: 12px 0;
+    }
+
+    .header-decoration {
+        padding: 6px 0;
+        gap: 8px;
+    }
+
+    .decoration-line {
+        width: 30px;
+        height: 1px;
+    }
+
+    .decoration-dots span {
+        width: 3px;
+        height: 3px;
     }
 }
 
